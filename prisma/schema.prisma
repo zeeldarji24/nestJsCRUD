@@ -1,0 +1,80 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Role {
+  id           String      @id @default(auto()) @map("_id") @db.ObjectId
+  name         String      @unique
+  permissionId String?     @db.ObjectId
+  permissions  Permission? @relation(fields: [permissionId], references: [id])
+  employees    Employee[]
+}
+
+model Permission {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  action String
+  roles  Role[]
+}
+
+model Employee {
+  id             String           @id @default(auto()) @map("_id") @db.ObjectId
+  name           String
+  email          String           @unique
+  age            Int
+  gender         String
+  salary         Int
+  created        DateTime         @default(now())
+  updated        DateTime         @updatedAt
+  isDeleted      Boolean          @default(false)
+  organizationId String?          @db.ObjectId
+  roleId         String?          @db.ObjectId
+  Organization   Organization?    @relation(fields: [organizationId], references: [id])
+  roles          Role?            @relation(fields: [roleId], references: [id])
+  userCredential userCredential[]
+  session        Session[]
+}
+
+model Organization {
+  id        String     @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  created   DateTime   @default(now())
+  updated   DateTime   @updatedAt
+  isDeleted Boolean    @default(false)
+  Employee  Employee[]
+}
+
+model userCredential {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  empId     String?  @db.ObjectId
+  password  String
+  created   DateTime @default(now())
+  updated   DateTime @updatedAt
+  isDeleted Boolean  @default(false)
+
+  employee Employee? @relation(fields: [empId], references: [id])
+}
+
+model Session {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  empId     String    @db.ObjectId
+  token     String
+  loginAt   DateTime  @default(now())
+  expireAt  DateTime
+  expiredAt DateTime?
+  created   DateTime  @default(now())
+  updated   DateTime  @updatedAt
+  isDeleted Boolean   @default(false)
+
+  employee Employee @relation(fields: [empId], references: [id])
+}
