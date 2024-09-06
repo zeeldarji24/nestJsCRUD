@@ -14,17 +14,28 @@ datasource db {
 }
 
 model Role {
-  id           String      @id @default(auto()) @map("_id") @db.ObjectId
-  name         String      @unique
-  permissionId String?     @db.ObjectId
-  permissions  Permission? @relation(fields: [permissionId], references: [id])
-  employees    Employee[]
+  id          String           @id @default(auto()) @map("_id") @db.ObjectId
+  name        String           @unique
+  isDeleted   Boolean          @default(false)
+  permissions RolePermission[]
+  Employee    Employee[]
 }
 
 model Permission {
-  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  id     String           @id @default(auto()) @map("_id") @db.ObjectId
   action String
-  roles  Role[]
+  roles  RolePermission[]
+}
+
+model RolePermission {
+  id           String @id @default(auto()) @map("_id") @db.ObjectId
+  roleId       String @db.ObjectId
+  permissionId String @db.ObjectId
+
+  role       Role       @relation(fields: [roleId], references: [id])
+  permission Permission @relation(fields: [permissionId], references: [id])
+
+  @@unique([roleId, permissionId])
 }
 
 model Employee {
@@ -43,6 +54,7 @@ model Employee {
   roles          Role?            @relation(fields: [roleId], references: [id])
   userCredential userCredential[]
   session        Session[]
+  roles          Role[]          @relation("EmployeeRoles", through: "RolePermission")
 }
 
 model Organization {

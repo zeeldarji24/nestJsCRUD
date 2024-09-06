@@ -47,6 +47,15 @@ export class EmployeeService {
         return this.prisma.employee.findMany({
             include: {
                 Organization: true,
+                roles: {
+                    include: {
+                        permissions: {
+                            include: {
+                                permission: true,
+                            },
+                        },
+                    },
+                },
             },
         });
     }
@@ -56,6 +65,15 @@ export class EmployeeService {
             where: employeeWhereUniqueInput,
             include: {
                 Organization: true,
+                roles: {
+                    include: {
+                        permissions: {
+                            include: {
+                                permission: true,
+                            },
+                        },
+                    },
+                },
             },
         });
         if (!employee) {
