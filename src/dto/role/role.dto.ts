@@ -7,7 +7,7 @@ export class CreateRoleDto {
 
     @IsArray()
     @IsNotEmpty()
-    permission: string[];
+    permissions: string[];
 }
 
 export class UpdateRoleDto {
@@ -17,11 +17,21 @@ export class UpdateRoleDto {
 
     @IsArray()
     @IsOptional()
-    permission?: string[];
+    permissions?: string[];
 }
 
 export class GetRoleByIdDto {
     @IsString()
     @IsNotEmpty()
     id: string;
+}
+
+export interface RoleResponse {
+    message: string;
+    data: {
+        id: string;
+        name: string;
+        isDeleted: boolean;
+        permissions: { id: string; action: string }[];
+    }[];
 }

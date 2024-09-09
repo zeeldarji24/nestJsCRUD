@@ -1,45 +1,66 @@
-import { Controller, Get, Post, Body, Put, Param, Delete } from '@nestjs/common';
+import { Controller, Post, Body, Get, Param, Put, Delete, NotFoundException, ConflictException, BadRequestException } from '@nestjs/common';
 import { RoleService } from './role.service';
 import { CreateRoleDto, UpdateRoleDto, GetRoleByIdDto } from 'src/dto/role/role.dto';
-import { Prisma, Role } from '@prisma/client';
+import { RoleResponse } from 'src/dto/role/role.dto';
 
 @Controller('roles')
 export class RoleController {
-    constructor(private readonly roleService: RoleService) { }
+    constructor(private roleService: RoleService) { }
 
     @Post()
-    async createRole(@Body() createRoleDto: CreateRoleDto): Promise<{ message: string; data?: Role }> {
-        const role = await this.roleService.createRole(createRoleDto);
-        return { message: 'Role created successfully', data: role };
+    async createRole(@Body() createRoleDto: CreateRoleDto): Promise<RoleResponse> {
+        try {
+            return await this.roleService.createRole(createRoleDto);
+        } catch (error) {
+            if (error instanceof BadRequestException) {
+                throw new BadRequestException('Error creating role');
+            }
+            throw new BadRequestException('Error creating role');
+        }
     }
 
     @Get()
-    async getRoles(): Promise<{ message: string; data?: Role[] }> {
-        const roles = await this.roleService.getRoles();
-        if (roles.length === 0) {
-            return { message: 'No roles found' };
+    async getAllRoles(): Promise<RoleResponse> {
+        try {
+            return await this.roleService.getRoles();
+        } catch (error) {
+            throw new BadRequestException('Error retrieving roles');
         }
-        return { message: 'Roles retrieved successfully', data: roles };
     }
 
     @Get(':id')
-    async getRoleById(@Param('id') id: string): Promise<{ message: string; data?: Role }> {
-        const role = await this.roleService.getRoleById({ id });
-        if (!role) {
-            return { message: 'Role not found' };
+    async getRoleById(@Param('id') id: string): Promise<RoleResponse> {
+        try {
+            return await this.roleService.getRoleById({ id });
+        } catch (error) {
+            if (error instanceof NotFoundException) {
+                throw new NotFoundException(error.message);
+            }
+            throw new BadRequestException('Error retrieving role');
         }
-        return { message: 'Role retrieved successfully', data: role };
     }
 
     @Put(':id')
-    async updateRole(@Param('id') id: string, @Body() updateRoleDto: UpdateRoleDto): Promise<{ message: string; data?: Role }> {
-        const role = await this.roleService.updateRole({ id }, updateRoleDto);
-        return { message: 'Role updated successfully', data: role };
+    async updateRole(@Param('id') id: string, @Body() updateRoleDto: UpdateRoleDto): Promise<RoleResponse> {
+        try {
+            return await this.roleService.updateRole({ id }, updateRoleDto);
+        } catch (error) {
+            if (error instanceof NotFoundException) {
+                throw new NotFoundException(error.message);
+            }
+            throw new BadRequestException('Error updating role');
+        }
     }
 
     @Delete(':id')
-    async deleteRole(@Param('id') id: string): Promise<{ message: string; data?: Role }> {
-        const role = await this.roleService.deleteRole({ id });
-        return { message: 'Role deleted successfully', data: role };
+    async deleteRole(@Param('id') id: string): Promise<RoleResponse> {
+        try {
+            return await this.roleService.deleteRole({ id });
+        } catch (error) {
+            if (error instanceof NotFoundException) {
+                throw new NotFoundException(error.message);
+            }
+            throw new BadRequestException('Error deleting role');
+        }
     }
 }

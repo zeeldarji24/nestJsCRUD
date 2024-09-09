@@ -24,7 +24,10 @@ export class PermissionService {
         });
     }
 
-    async updatePermission(permissionWhereUniqueInput: Prisma.PermissionWhereUniqueInput, updatePermissionDto: UpdatePermissionDto): Promise<Permission> {
+    async updatePermission(
+        permissionWhereUniqueInput: Prisma.PermissionWhereUniqueInput,
+        updatePermissionDto: UpdatePermissionDto,
+    ): Promise<Permission> {
         return this.prisma.permission.update({
             where: permissionWhereUniqueInput,
             data: updatePermissionDto,

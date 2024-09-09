@@ -28,7 +28,6 @@ export class EmployeeService {
                     roleId: employeeData.roleId,
                 },
             });
-
             const password = await convertPassword(employeeData.password);
             await this.prisma.userCredential.create({
                 data: {
@@ -45,15 +44,14 @@ export class EmployeeService {
 
     async getAllEmployees(): Promise<Employee[]> {
         return this.prisma.employee.findMany({
+            where: { isDeleted: false },
             include: {
-                Organization: true,
-                roles: {
-                    include: {
-                        permissions: {
-                            include: {
-                                permission: true,
-                            },
-                        },
+                organization: true,
+                role: {
+                    select: {
+                        id: true,
+                        name: true,
+                        permissions: true,
                     },
                 },
             },
@@ -62,16 +60,17 @@ export class EmployeeService {
 
     async getEmployeeById(employeeWhereUniqueInput: Prisma.EmployeeWhereUniqueInput): Promise<Employee | null> {
         const employee = await this.prisma.employee.findUnique({
-            where: employeeWhereUniqueInput,
+            where: {
+                ...employeeWhereUniqueInput,
+                isDeleted: false
+            },
             include: {
-                Organization: true,
-                roles: {
-                    include: {
-                        permissions: {
-                            include: {
-                                permission: true,
-                            },
-                        },
+                organization: true,
+                role: {
+                    select: {
+                        id: true,
+                        name: true,
+                        permissions: true,
                     },
                 },
             },
@@ -115,5 +114,4 @@ export class EmployeeService {
             throw new NotFoundException('Employee not found or error occurred');
         }
     }
-
 }

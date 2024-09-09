@@ -14,28 +14,17 @@ datasource db {
 }
 
 model Role {
-  id          String           @id @default(auto()) @map("_id") @db.ObjectId
-  name        String           @unique
-  isDeleted   Boolean          @default(false)
-  permissions RolePermission[]
-  Employee    Employee[]
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  name        String     @unique
+  isDeleted   Boolean    @default(false)
+  permissions String[]
+  employees   Employee[]
 }
 
 model Permission {
-  id     String           @id @default(auto()) @map("_id") @db.ObjectId
+  id     String   @id @default(auto()) @map("_id") @db.ObjectId
   action String
-  roles  RolePermission[]
-}
-
-model RolePermission {
-  id           String @id @default(auto()) @map("_id") @db.ObjectId
-  roleId       String @db.ObjectId
-  permissionId String @db.ObjectId
-
-  role       Role       @relation(fields: [roleId], references: [id])
-  permission Permission @relation(fields: [permissionId], references: [id])
-
-  @@unique([roleId, permissionId])
+  roles  String[]
 }
 
 model Employee {
@@ -50,11 +39,10 @@ model Employee {
   isDeleted      Boolean          @default(false)
   organizationId String?          @db.ObjectId
   roleId         String?          @db.ObjectId
-  Organization   Organization?    @relation(fields: [organizationId], references: [id])
-  roles          Role?            @relation(fields: [roleId], references: [id])
+  organization   Organization?    @relation(fields: [organizationId], references: [id])
+  role           Role?            @relation(fields: [roleId], references: [id])
   userCredential userCredential[]
   session        Session[]
-  roles          Role[]          @relation("EmployeeRoles", through: "RolePermission")
 }
 
 model Organization {
@@ -63,7 +51,7 @@ model Organization {
   created   DateTime   @default(now())
   updated   DateTime   @updatedAt
   isDeleted Boolean    @default(false)
-  Employee  Employee[]
+  employees Employee[]
 }
 
 model userCredential {
