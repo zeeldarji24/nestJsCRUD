@@ -6,5 +6,317 @@
     "deletedMessageIDs": [],
     "deletedPanelChatIDs": []
   },
-  "kv_store": {}
+  "kv_store": {
+    "unique_matched_lines_count": 0,
+    "total_repo_line_count": 1716,
+    "best_prompt_response": null,
+    "file_statistics": [
+      {
+        "file": ".eslintrc.js",
+        "total_lines": 26,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".prettierrc",
+        "total_lines": 4,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "README.md",
+        "total_lines": 86,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "nest-cli.json",
+        "total_lines": 9,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "package.json",
+        "total_lines": 83,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "prisma/schema.prisma",
+        "total_lines": 81,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/app.controller.spec.ts",
+        "total_lines": 23,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/app.controller.ts",
+        "total_lines": 13,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/app.module.ts",
+        "total_lines": 17,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/app.service.ts",
+        "total_lines": 9,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/auth/auth.controller.spec.ts",
+        "total_lines": 19,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/auth/auth.controller.ts",
+        "total_lines": 44,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/auth/auth.module.ts",
+        "total_lines": 12,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/auth/auth.service.spec.ts",
+        "total_lines": 19,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/auth/auth.service.ts",
+        "total_lines": 70,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/common/common.ts",
+        "total_lines": 10,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/dto/auth/login.dto.ts",
+        "total_lines": 19,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/dto/employeeDto/create-employee.dto.ts",
+        "total_lines": 69,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/dto/employeeDto/update-epmployee.dto.ts",
+        "total_lines": 36,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/dto/organizationDto/organization.dto.ts",
+        "total_lines": 18,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/dto/permission/create-permission.dto.ts",
+        "total_lines": 6,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/dto/permission/update-permission.dto.ts",
+        "total_lines": 7,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/dto/role/role.dto.ts",
+        "total_lines": 38,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/employee/employee.controller.spec.ts",
+        "total_lines": 19,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/employee/employee.controller.ts",
+        "total_lines": 96,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/employee/employee.module.ts",
+        "total_lines": 12,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/employee/employee.service.spec.ts",
+        "total_lines": 19,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/employee/employee.service.ts",
+        "total_lines": 118,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/main.ts",
+        "total_lines": 23,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/organization/organization.controller.spec.ts",
+        "total_lines": 19,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/organization/organization.controller.ts",
+        "total_lines": 45,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/organization/organization.module.ts",
+        "total_lines": 12,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/organization/organization.service.spec.ts",
+        "total_lines": 19,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/organization/organization.service.ts",
+        "total_lines": 46,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/permission/permission.controller.spec.ts",
+        "total_lines": 19,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/permission/permission.controller.ts",
+        "total_lines": 69,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/permission/permission.module.ts",
+        "total_lines": 12,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/permission/permission.service.spec.ts",
+        "total_lines": 19,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/permission/permission.service.ts",
+        "total_lines": 43,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/prisma/prisma.module.ts",
+        "total_lines": 9,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/prisma/prisma.service.spec.ts",
+        "total_lines": 19,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/prisma/prisma.service.ts",
+        "total_lines": 15,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/role/role.controller.spec.ts",
+        "total_lines": 19,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/role/role.controller.ts",
+        "total_lines": 67,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/role/role.module.ts",
+        "total_lines": 12,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/role/role.service.spec.ts",
+        "total_lines": 19,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/role/role.service.ts",
+        "total_lines": 186,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "test/app.e2e-spec.ts",
+        "total_lines": 25,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "test/jest-e2e.json",
+        "total_lines": 10,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "tsconfig.build.json",
+        "total_lines": 5,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "tsconfig.json",
+        "total_lines": 22,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      }
+    ]
+  }
 }
